@@ -5,18 +5,12 @@
         <title>jQTouch &beta;</title>
         <link rel="stylesheet" href="themes/css/vanilla.css" title="jQTouch">
         <script src="phonegap.js"></script>
-
-       <script src="src/lib/zepto.min.js" type="text/javascript" charset="utf-8"></script>
-
         <script src="src/lib/zepto.min.js" type="text/javascript" charset="utf-8"></script>
-
         <script src="src/jqtouch.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="appjs/actions.js" type="text/javascript" charset="utf-8"></script>
         <!-- Uncomment the following two lines (and comment out the previous two) to use jQuery instead of Zepto. -->
         <!-- <script src="../../src/lib/jquery-1.7.min.js" type="application/x-javascript" charset="utf-8"></script> -->
         <!-- <script src="../../src/jqtouch-jquery.min.js" type="application/x-javascript" charset="utf-8"></script> -->
-
-        <script src="../../extensions/jqt.themeswitcher.min.js" type="application/x-javascript" charset="utf-8"></script>
 
         <script type="text/javascript" charset="utf-8">
             var jQT = new $.jQTouch({
@@ -34,24 +28,8 @@
                 // Orientation callback event
                 $('#jqt').bind('turn', function(e, data){
                     $('#orient').html('Orientation: ' + data.orientation);
-	$('#Bot').text(device.name);  
-                });
-
-<<<<<<< HEAD
-
-
-
-
-=======
-$(document).ready(function(e) {
-
-    document.addEventListener('deviceready', function (){
-	$('#Bot').text(navigator.device.name);
-	    $('#device table td').eq(3).text(device.phonegap);
-	},false);
-});
->>>>>>> N4
-                
+              });
+          
             });
         </script>
         <style type="text/css" media="screen">
@@ -86,7 +64,7 @@ $(document).ready(function(e) {
                     <p>         <b> <em> Demostraci&oacute;n</em></b></p>
                     <p> Informaci&oacute;n del dispositivo</p>
                                        
-                    <p>  <button  id="Bot">Show</button>
+<li id="orient">Orientation: <strong>portrait</strong></li>
                     <p><br><br><a href="#" class="grayButton goback">Close</a></p>
             </div>
            <div id="home" class="current">
