@@ -1,0 +1,149 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>jQTouch &beta;</title>
+        <link rel="stylesheet" href="themes/css/vanilla.css" title="jQTouch">
+        <script src="phonegap.js"></script>
+
+       <script src="src/lib/zepto.min.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="src/lib/zepto.min.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="src/jqtouch.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="appjs/actions.js" type="text/javascript" charset="utf-8"></script>
+        <!-- Uncomment the following two lines (and comment out the previous two) to use jQuery instead of Zepto. -->
+        <!-- <script src="../../src/lib/jquery-1.7.min.js" type="application/x-javascript" charset="utf-8"></script> -->
+        <!-- <script src="../../src/jqtouch-jquery.min.js" type="application/x-javascript" charset="utf-8"></script> -->
+
+        <script src="../../extensions/jqt.themeswitcher.min.js" type="application/x-javascript" charset="utf-8"></script>
+
+        <script type="text/javascript" charset="utf-8">
+            var jQT = new $.jQTouch({
+                icon: 'jqtouch.png',
+                icon4: 'jqtouch4.png',
+                addGlossToIcon: false,
+                startupScreen: 'jqt_startup.png',
+                statusBar: 'black-translucent',
+                themeSelectionSelector: '#jqt #themes ul',
+                preloadImages: []
+            });
+
+            // Some sample Javascript functions:
+            $(function(){
+                // Orientation callback event
+                $('#jqt').bind('turn', function(e, data){
+                    $('#orient').html('Orientation: ' + data.orientation);
+	$('#Bot').text(device.name);  
+                });
+
+<<<<<<< HEAD
+
+
+
+
+=======
+$(document).ready(function(e) {
+
+    document.addEventListener('deviceready', function (){
+	$('#Bot').text(navigator.device.name);
+	    $('#device table td').eq(3).text(device.phonegap);
+	},false);
+});
+>>>>>>> N4
+                
+            });
+        </script>
+        <style type="text/css" media="screen">
+            #jqt.fullscreen #home .info {
+                display: none;
+            }
+            div#jqt #credits {
+                padding: 100px 10px 40px;
+                text-shadow: rgba(0, 0, 0, 0.3) 0px -1px 0;
+                color: #999;
+                font-size: 13px;
+                text-align: center;
+                background: #161618;
+            }
+            div#jqt #credits p {
+                margin-bottom: 8px;
+            }
+            div#jqt #credits a {
+                color: #fff;
+                font-weight: bold;
+                text-decoration: none;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="jqt">
+            <div id="credits" class="selectable">
+                    <p><img src="jqtouch.png" /></p>
+                    <p><strong>jQTouch</strong><br>Practica 2<br>
+                        By ICEon</p>
+                    
+                    <p>         <b> <em> Demostraci&oacute;n</em></b></p>
+                    <p> Informaci&oacute;n del dispositivo</p>
+                                       
+                    <p>  <button  id="Bot">Show</button>
+                    <p><br><br><a href="#" class="grayButton goback">Close</a></p>
+            </div>
+           <div id="home" class="current">
+                <div class="toolbar">
+                    <h1>jQTouch</h1>
+                    <a class="button slideup" id="infoButton" href="#credits">Cr&eacute;ditos</a>
+                </div>
+                <div class="scroll">
+                <h2> Opciones </h2>
+                    <ul class="rounded">
+                        <li class="arrow"><a href="#device">Dispositivo<small class="counter">5</small></a> </li>
+                        <li class="arrow"><a href="#events">Eventos<small class="counter">4</small></a></li>
+                        <li class="arrow"><a href="#contacts">Contactos<small class="counter">2</small></a></li>
+                        <li class="arrow"><a href="#files">Archivos<small class="counter">2</small></a></li>
+                    </ul>
+                    
+                    <div class="info">
+                        <p>Pr&aacute;ctica de Phone GAP clase 4 <br> Utlizando jqtouch con zepto</p>
+                    </div>
+                </div>
+            </div>
+            <div id="device">
+                <div class="toolbar">
+                    <h1>jQTouch</h1>
+                    <a class="back" href="#"><</a>
+                </div>
+                <div class="scroll">
+                <h2> Informaci&oacute;n </h2>
+                 <center>
+                 
+
+            // Some sample Javascript functions:
+                // Orientation callback event
+
+
+  
+
+                
+
+
+
+                   <table>
+                    <tr><td><strong> Nombre del Dispositivo </strong></td><td></td></tr>
+                    <tr><td><strong> Versi&oacute;n de PhoneGAP </strong></td><td></td></tr>
+                    <tr><td><strong> Plataforma </strong></td><td></td></tr>
+                    <tr><td><strong> Versi&oacute;n de Plataforma </strong></td><td></td></tr>
+                    <tr><td><strong> ID del Dispositivo </strong></td><td></td></tr>
+                   </table>                    
+                  </center>
+                    <div class="info">
+                        <p>Caracter&iacute;sticas del dispositivo</p>
+                    </div>
+                </div>
+            </div> 
+            
+          
+            
+        </div>
+    </body>
+</html>
