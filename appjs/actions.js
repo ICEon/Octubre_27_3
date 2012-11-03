@@ -21,69 +21,6 @@ function eventHistory(action){
 $('#eventsHistory').append('<li>'+action+'</li>');
 }*/
 //Contactos en el dispositivo
-function readContacts(){
-navigator.contacts.find(["*"], function(contactoss){
-var contactosList='';
-for(i=0;i<contactoss.length;i++){
-var contactoo = contactoss[i];
-contactosList += '<li><a href="tel://'+contactoo.phoneNumbers[0].value+'">'+contactoo.name.formatted+'</a></li>';
-$('#contactsList').html(contactosList);
-}
-}, function(){
-pgAlert('No se han podido leer los contactos');
-});
-}
-//Crear contactos
-function newContact(){
-if($('#contDispley').val() != '' && $('#contName').val() != '' && $('#contFamily').val() != '' && $('#contPhone').val() != ''){
-//alert($('#contDispley').val()+'-'+$('#contName').val()+'-'+$('#contFamily').val()+'-'+$('#contPhone').val());
-var contacto = navigator.contacts.create();
-//Nombre para mostrar
-contacto.displayName = $('#contDispley').val();
-//Nombre del Contacto
-contacto.name = new CountactName();
-contacto.name.givenName = $('#contName').val();
-contacto.name.familyName = $('#contFamily').val();
-//Teléfono
-var tel = ($('#contPhone').val()).substring(0,3)+'-'+($('#contPhone').val()).substring(3,3)+'-'+($('#contPhone').val()).substring(6,4);
-contacto.phoneNunbers = [];
-contacto.phoneNumbers[0] = new ContactField("mobile", tel, true);//p1("home","mobile","work") - p2(cadena de texto con formato 123-456-7890) - p3(true, false)
-
-contacto.save(function(){//Guardar al contacto
-pgAlert("Grabado Correctamente");
-}, function(){
-pgAlert("No se pudo Guardar");
-});
-//Reintento
-// create a new contact object
-var elContact = navigator.contacts.create();
-elContact.displayName = $('#contDispley').val();
-elContact.nickname = $('#contDispley').val(); //specify both to support all devices
-
-// populate some fields
-var name = new ContactName();
-name.givenName = $('#contName').val();
-name.familyName = $('#contFamily').val();
-elContact.name = name;
-var tel = ($('#contPhone').val()).substring(0,3)+'-'+($('#contPhone').val()).substring(3,6)+'-'+($('#contPhone').val()).substring(6,10);
-var phone = [];
-phone[0] = new ContactField('mobile', tel, true);
-elContact.phoneNumbers = phone;
-
-// save to device
-elContact.save(function(){
-//correcto
-pgAlert("Grabado Correctamente");
-}, function(contactError){
-//error
-pgAlert("No se pudo Guardar: "+contactError.code);
-});
-//Volver a leer contactos
-readContacts();
-}else{
-pgAlert("Tienes que llenar todos los campos");
-}
-}
 //Lectura de archivos
 function readFiles(){
 window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem){
@@ -159,6 +96,87 @@ break;
 });*/
 $(document).ready(function(){
 document.addEventListener("deviceready",function(){
+
+
+
+
+
+
+
+
+
+
+function readContacts(){
+ navigator.contacts.find(["*"], function(contactoss){
+ var contactosList='';
+ for(i=0;i<contactoss.length;i++)
+  {
+   var contactoo = contactoss[i];
+   contactosList += '<li><a href="tel://'+contactoo.phoneNumbers[0].value+'">'+contactoo.name.formatted+'</a></li>';
+   $('#contactsList').html(contactosList);
+  }
+ }, function(){
+pgAlert('No se han podido leer los contactos');
+});
+}
+//Crear contactos
+function newContact(){
+if($('#contDispley').val() != '' && $('#contName').val() != '' && $('#contFamily').val() != '' && $('#contPhone').val() != ''){
+//alert($('#contDispley').val()+'-'+$('#contName').val()+'-'+$('#contFamily').val()+'-'+$('#contPhone').val());
+var contacto = navigator.contacts.create();
+//Nombre para mostrar
+contacto.displayName = $('#contDispley').val();
+//Nombre del Contacto
+contacto.name = new CountactName();
+contacto.name.givenName = $('#contName').val();
+contacto.name.familyName = $('#contFamily').val();
+//Teléfono
+var tel = ($('#contPhone').val()).substring(0,3)+'-'+($('#contPhone').val()).substring(3,3)+'-'+($('#contPhone').val()).substring(6,4);
+contacto.phoneNunbers = [];
+contacto.phoneNumbers[0] = new ContactField("mobile", tel, true);//p1("home","mobile","work") - p2(cadena de texto con formato 123-456-7890) - p3(true, false)
+
+contacto.save(function(){//Guardar al contacto
+pgAlert("Grabado Correctamente");
+}, function(){
+pgAlert("No se pudo Guardar");
+});
+//Reintento
+// create a new contact object
+var elContact = navigator.contacts.create();
+elContact.displayName = $('#contDispley').val();
+elContact.nickname = $('#contDispley').val(); //specify both to support all devices
+
+// populate some fields
+var name = new ContactName();
+name.givenName = $('#contName').val();
+name.familyName = $('#contFamily').val();
+elContact.name = name;
+var tel = ($('#contPhone').val()).substring(0,3)+'-'+($('#contPhone').val()).substring(3,6)+'-'+($('#contPhone').val()).substring(6,10);
+var phone = [];
+phone[0] = new ContactField('mobile', tel, true);
+elContact.phoneNumbers = phone;
+
+// save to device
+elContact.save(function(){
+//correcto
+pgAlert("Grabado Correctamente");
+}, function(contactError){
+//error
+pgAlert("No se pudo Guardar: "+contactError.code);
+});
+//Volver a leer contactos
+readContacts();
+}else{
+pgAlert("Tienes que llenar todos los campos");
+}
+}
+
+
+
+
+
+
+
 //Informaci�n del dispositivo
 $('#devic table td').eq(1).text(device.name);
 $('#devic table td').eq(3).text(device.phonegap);
@@ -183,7 +201,7 @@ readContacts();
 //Acciones de formularios
 $('.sendForm').click(function(){
 switch($(this).parents('ul').attr('id')){
-case 'nueContact':
+case 'nuevoContacto':
 newContact();
 break;
 case 'playFiles':
