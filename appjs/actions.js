@@ -123,23 +123,6 @@ pgAlert('No se han podido leer los contactos');
 function newContact(){
 if($('#contDispley').val() != '' && $('#contName').val() != '' && $('#contFamily').val() != '' && $('#contPhone').val() != ''){
 //alert($('#contDispley').val()+'-'+$('#contName').val()+'-'+$('#contFamily').val()+'-'+$('#contPhone').val());
-var contacto = navigator.contacts.create();
-//Nombre para mostrar
-contacto.displayName = $('#contDispley').val();
-//Nombre del Contacto
-contacto.name = new CountactName();
-contacto.name.givenName = $('#contName').val();
-contacto.name.familyName = $('#contFamily').val();
-//Teléfono
-var tel = ($('#contPhone').val()).substring(0,3)+'-'+($('#contPhone').val()).substring(3,3)+'-'+($('#contPhone').val()).substring(6,4);
-contacto.phoneNunbers = [];
-contacto.phoneNumbers[0] = new ContactField("mobile", tel, true);//p1("home","mobile","work") - p2(cadena de texto con formato 123-456-7890) - p3(true, false)
-
-contacto.save(function(){//Guardar al contacto
-pgAlert("Grabado Correctamente");
-}, function(){
-pgAlert("No se pudo Guardar");
-});
 //Reintento
 // create a new contact object
 var elContact = navigator.contacts.create();
@@ -170,9 +153,6 @@ readContacts();
 pgAlert("Tienes que llenar todos los campos");
 }
 }
-
-
-
 
 
 
