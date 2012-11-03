@@ -200,7 +200,9 @@ eventHistory('La aplicaci&oacute;n se ha desconectado');
 readContacts();
 //Acciones de formularios
 $('.sendForm').click(function(){
+pgAlert ('Here');
 	pgAlert ($(this).parents('ul').attr('id'));
+	pgAlert ('There');
 switch($(this).parents('ul').attr('id')){
 
 case 'nuevoContacto':
